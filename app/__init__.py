@@ -11,11 +11,14 @@ def create_app():
     app = Flask(__name__)  
     app.config.from_object(Config)  
 
+    # Initialize extensions  
     db.init_app(app)  
 
+    # Create tables directly in the database  
     with app.app_context():  
-        db.create_all()  # Create tables if they don't exist  
+        db.create_all()  # This will create tables if they don't already exist  
 
+    # Register blueprints  
     from app.routes import main  
     app.register_blueprint(main)  
 
