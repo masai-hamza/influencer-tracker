@@ -6,8 +6,6 @@ class Influencer(db.Model):
 
     unique_id = db.Column(db.Integer, primary_key=True, autoincrement=True)  
     name = db.Column(db.String(100), nullable=False)  
-    # channel_name = db.Column(db.String(100), nullable=False)  # Dropdown  
-    # profile = db.Column(db.String(100), nullable=False)  
     created_at = db.Column(db.DateTime, default=datetime.utcnow)  # New field  
 
     def __repr__(self):  
@@ -21,7 +19,9 @@ class IM_Tracker(db.Model):
     unique_id = db.Column(db.Integer, db.ForeignKey("influencers.unique_id"), nullable=False)  
     channel_name = db.Column(db.String(100), nullable=False)  
     profile = db.Column(db.String(100), nullable=False)  
-    activation_for = db.Column(db.String(100), nullable=False)  
+    # activation_for = db.Column(db.String(100), nullable=False)
+    course = db.Column(db.String(100), nullable=False)
+    cohort_id = db.Column(db.Integer, nullable=True) 
     platform = db.Column(db.String(100), nullable=False)  # Dropdown  
     tentative_live_date = db.Column(db.Date, nullable=False)  
     landing_page_url = db.Column(db.String(200), nullable=False)  

@@ -11,13 +11,14 @@ class InfluencerForm(FlaskForm):
         validators=[DataRequired()]  
     )    
     profile = StringField("Influencer Profile", validators=[DataRequired()])  
-    activation_for = StringField("Activation For", validators=[DataRequired()])  
+    # activation_for = StringField("Course", validators=[DataRequired()])
+    course = SelectField("Course", choices=[], validators=[DataRequired()])  
     platform = SelectField(  
         "Platform",  
         choices=[("Story", "Story"), ("Reel", "Reel"), ("Both", "Both"), ("Other", "Other")],  
         validators=[DataRequired()]  
     )
-    cost = DecimalField("Cost", validators=[NumberRange(min=0)], places=2)  
+    cost = DecimalField("Cost", validators=[NumberRange(min=0),DataRequired()], places=2)  
     tentative_live_date = DateField("Tentative Live Date", format="%Y-%m-%d", validators=[DataRequired()])  # DateField
     landing_page_url = StringField("Landing Page URL", validators=[DataRequired(), URL()])  
     utm_source = StringField("UTM Source", validators=[DataRequired()])
